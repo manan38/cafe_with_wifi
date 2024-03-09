@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <title>Cafes with WiFi and Coffee</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Cafes with WiFi and Great Coffee</h1>
+    <ul id="cafes-list">
+        {% for cafe in cafes %}
+            <li>{{ cafe.name }} - {{ cafe.location }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/cafes" method="POST">
+        <input type="text" name="name" placeholder="Cafe Name" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <select name="wifi">
+            <option value="1">WiFi available</option>
+            <option value="0">No WiFi</option>
+        </select>
+        <input type="text" name="coffee_quality" placeholder="Coffee Quality" required>
+        <button type="submit">Add Cafe</button>
+    </form>
+</div>
+</body>
+</html>
